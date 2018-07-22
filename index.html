@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="standard.css">
+
+</head>
+
+<body>
+    <div id="textareas">
+        <textarea id="textarea1" class="sequenceTextarea" placeholder="Please enter your sequence here"></textarea>
+    </div>
+
+    <button onclick="addTextarea(document.getElementById('textareas'))">Add textarea</button>
+
+    <button onclick="getScores(document.getElementById('textareas'))">Script ausführen</button>
+
+    <!--
+    <button onclick="sequenceCompare(document.getElementById('textarea1').value, document.getElementById('textarea2').value)">Script ausführen</button>
+
+-->
+    <div id="result">
+
+    </div>
+
+
+
+    <script src="dnaCompare.js"></script>
+    <script src="textWorker.js"></script>
+</body>
+
+
+</html>
