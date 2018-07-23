@@ -8,12 +8,14 @@ function addTextarea(htmlElement) {
   newTextarea.placeholder = "Please enter your sequence here";
   htmlElement.appendChild(newBreak);
   htmlElement.appendChild(newTextarea);
-  console.log(htmlElement);
   i++;
 }
 
-function showResult(sequences, results) {
-  var headers = ["Sequence", "Score"];
+function showResult(sequences) {
+  var headers = Array();
+  for (var m in sequences[0]) {
+    headers.push(m);
+  }
 
   var table = document.createElement("table");
   var header = table.createTHead();
@@ -25,16 +27,13 @@ function showResult(sequences, results) {
 
   for (var j = 0; j < sequences.length; j++) {
     var rowData = table.insertRow(j + 1);
-    console.log(rowData + " Das hier ist rowData");
-
-    console.log("J ist: " + j);
-    // TODO hier müsste eigentlich j rein, aber dann wird ein Fehler geworfen:
-    //Uncaught DOMException: Failed to execute 'insertCell' on 'HTMLTableRowElement':
-    //The value provided (1) is outside the range [-1, 0].
-    var cellData = rowData.insertCell(-1);
-    cellData.innerHTML = sequences[j];
-    cellData = rowData.insertCell(-1);
-    cellData.innerHTML = results[j];
+    var sequence = sequences[j];
+    var k = 0;
+    for (var m in sequence) {
+      var cellData = rowData.insertCell(k);
+      cellData.innerHTML = sequence[m];
+      k++;
+    }
   }
 
   document.getElementById("result").appendChild(table);
